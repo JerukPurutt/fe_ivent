@@ -8,25 +8,59 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
 </head>
-<body class="bg-gray-100 min-h-screen flex">
+<body class="bg-gray-100 min-h-screen flex    mt-16 ">
 <?php include '../sidebar.php'; ?>
   <div class="flex-1 flex flex-col">
   <?php include '../navbar.php'; ?>
     <!-- Content -->
-    <main class="flex-1 p-6">
+    <main class="flex-1 p-6 ml-64 p-6 ">
       <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Manajemen Event Kelompok</h1>
-        <button  onclick="toggleCreateForm()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">+ Create Event</button>
+        <button onclick="toggleCreateForm()" class="  relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 z-10">
+        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+        Create Event
+        </span>
+        </button>
       </div>
         <?php include 'AddEvent.php'; ?>
       <!-- Filter and Search -->
-      <div class="flex flex-wrap gap-4 mb-4">
-        <select class="border-gray-300 rounded px-4 py-2 shadow text-gray-700">
-          <option value="">Filter by...</option>
-          <option value="upcoming">Upcoming</option>
-          <option value="past">Past</option>
-        </select>
-        <input type="text" placeholder="Search by name..." class="flex-1 border border-gray-300 rounded px-4 py-2 shadow" />
+      <div class="flex flex-wrap gap-4 mb-4 items-center">
+        <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          type="button">
+          Filter by  
+        </button>   
+        <!-- Dropdown menu -->
+        <div id="dropdownHover"
+          class="z-10 hidden bg-white divide-y divide-white-100 rounded-sm shadow-sm w-44 ">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-900 bg-white" aria-labelledby="dropdownHoverButton">
+            <li>
+              <a href="#"
+                class="block px-4 py-2 dark:hover:text-black">Admin</a>
+            </li>
+            <li>
+              <a href="#"
+                class="block px-4 py-2 dark:hover:text-black">User</a>
+            </li>
+          </ul>
+        </div>
+        <form class="flex-1 ">   
+          <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white bg-white">Search</label>
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+              </svg>
+            </div>
+            <input type="search" id="default-search"
+              class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 bg-white borderdark:border-gray-800 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Ketik Disini . . . " required />
+            <button type="submit"
+              class="text-white absolute end-2 bottom-1.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+          </div>
+        </form>
       </div>
       <!-- Table -->
       <div class="overflow-x-auto">
@@ -58,11 +92,9 @@
               <td class="px-6 py-4 border-b text-center">
               <form action="EventUpdate.php" method="POST">
                   <input type="hidden" name="admin_id" value="1" />
-                  <button type="submit" class="bg-green-500 hover:bg-green-600 text-white text-sm px-3 py-1 rounded mr-2">
-                    Update
-                  </button>
+                  <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-2 py-1.5 text-center me-2 mb-2"><span class="material-symbols-rounded">edit_square</span></button>
                 </form>
-                <button class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded">Delete</button>
+                <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-2 py-1.5 text-center me-2 mb-2"><span class="material-symbols-rounded">delete</span></button>
               </td>
             </tr>
             <!-- Tambahkan baris lain sesuai data -->

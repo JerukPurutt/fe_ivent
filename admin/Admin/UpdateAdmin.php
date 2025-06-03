@@ -1,32 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Edit Admin</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-100 min-h-screen p-6">
-  <div class="max-w-xl mx-auto bg-white p-6 rounded shadow border">
+<script src="https://cdn.tailwindcss.com"></script>
+  <?php include '../navbar.php'; ?>
+  <?php include '../sidebar.php'; ?>
+  <div class=" ml-[450px] max-w-3xl mt-[64px] mx-auto  p-6 rounded shadow border">
     <h1 class="text-2xl font-bold text-gray-800 mb-4">Edit Admin</h1>
-    <form class="space-y-4">
+    <form action="UpdateUser.php" method="POST" class="space-y-4">
       <div>
-        <label class="block mb-1 font-medium text-gray-700">User ID</label>
-        <input type="text" name="user_id" value="2" class="w-full border px-4 py-2 rounded" />
+        <label for="user_id" class="block mb-1 font-medium text-gray-700">User ID</label>
+        <input type="text" id="user_id" name="user_id" value="2" class="w-full border px-4 py-2 rounded" required />
       </div>
 
       <div>
-        <label class="block mb-1 font-medium text-gray-700">Email</label>
-        <input type="email" name="email" value="habilatida@gmail.com" class="w-full border px-4 py-2 rounded" />
+        <label for="username" class="block mb-1 font-medium text-gray-700">Email</label>
+        <input type="email" id="username" name="username" value="habilatida@gmail.com" class="w-full border px-4 py-2 rounded" required />
       </div>
 
       <div>
-        <label class="block mb-1 font-medium text-gray-700">Alamat</label>
-        <input type="text" name="alamat" value="Ponokawan" class="w-full border px-4 py-2 rounded" />
+        <label for="password" class="block mb-1 font-medium text-gray-700">Alamat</label>
+        <input type="text" id="password" name="password" value="Ponokawan" class="w-full border px-4 py-2 rounded" required />
       </div>
 
       <div class="flex justify-between">
-        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Simpan</button>
-        <a href="AdminList.php" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Batal</a>
+        <a href="AdminList.php" 
+           class="text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 shadow text-center">
+          Batal
+        </a>
+        <button type="submit" 
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 shadow">
+          Simpan
+        </button>
       </div>
     </form>
   </div>
